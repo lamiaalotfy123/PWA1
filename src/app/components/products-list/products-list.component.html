@@ -1,0 +1,71 @@
+<!-- <img class="img-logo" src="{{store1.logo}}"> -->
+
+<div class="container">
+
+    <h2>Welcome to {{store1.name | uppercase}}</h2>
+    <!-- <h5>{{Date|date}}</h5> -->
+    <!-- <p>Welcome to {{store1.name}}! We have a wide variety of products at your disposal. Please select one below:</p> -->
+    <!-- <div class="my-2"> -->
+    <!-- <p>{{ "3000910260578298" | creditCard }}</p> -->
+    <!-- </div> -->
+    <!-- 3-event binding -->
+    <button (click)="toggle()" class="btn btn-secondary mb-2">{{showorhideimage?'Hide':"Show"}}
+    Image</button>
+    <!--  <div>{{showorhideimage?' ':'thank you ' + ClinetName+ " for visite our website " }}</div> -->
+    <div>
+        <!-- select category options -->
+        <!-- 4-tow way binding -->
+        <select [(ngModel)]="selectedCategory" (change)="filterByCategory()" class="form-select">
+      @for ( category of categories;track category.id) {
+      <option value="{{category.id}}"
+        aria-placeholder="Select Category">{{category.name}}</option>
+      }
+    </select>
+    </div>
+    <div class="row">
+        <h1>Products</h1>
+        @for (product of filterProducts ;track product.id){
+        <!-- style binding =>ternary operator -->
+        <!-- <div class=" card m-2 " style="width: 25.8rem; " [style.border-color]="(product.quantity>=3)?'gray':'red'" [style.border-width]=" (product.quantity>=3)?'2px':'3px' "> -->
+        <!-- ngStyle -->
+        <div class="card  m-2 " style=" width: 25.8rem; " [ngStyle]="{ 'border-color':(product.quantity>=3)?'gray':'red', 'border-width':(product.quantity>=3)?'2px':'3px'}" appCardStyle> @if(showorhideimage){
+            <img [src]="product.PrdimgURL" (click)="ShowDetails(product.id)" class="card-img-top img-fluid mt-2" alt="..." appCardStyle>}
+            <div class="card-body">
+                <!-- <h5 class="card-title">Card title</h5> -->
+                <h4 class="card-title fw-bolder ">{{product.name}}
+
+                </h4>
+                <h5> price:{{product.price|currency:"EUR":"symbol"}}</h5>
+
+                <div>
+                    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                    <!-- class binding one class  -->
+                    <!-- <h6 class="card-text" [class.text-danger]="product.quantity<=2" [class.fw-bolder]="product.quantity<=2"> -->
+                    <!-- ngClass -->
+                    <h6 class="card-text" [ngClass]="{'text-danger fw-bolder ':product.quantity<=2,'text-success ':product.quantity>2}">
+
+                        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                        @switch (product.quantity) { @case (0) { Out of stock } @case (1) { last one item } @case (2) { last 2 item } @default { In stock {{product.quantity}} items } }
+                    </h6>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                    <button href=" # " (click)="deqreaseQuantity(product)" (click)="addToCart(product)" class="btn  btn-danger " [disabled]="product.quantity==0 " appCardStyle>
+            Add to cart</button>
+                    <div class="d-flex">
+                        <button type="button " class="col-6 btn btn-primary me-2  " (click)="updateProduct(product.id)">Edit</button>
+                        <button type="button " class="col-6 btn btn-warning " (click)="deleteProduct(product.id)">Delete</button>
+
+                    </div>
+
+                    <!-- button delete -->
+                    <!-- <button (click)="deleteProduct() " class="btn btn-danger ">Delete</button> -->
+                </div>
+            </div>
+        </div>
+        } @empty {
+        <h1 class="text-danger ">No products found</h1>
+        }
+    </div>
+</div>

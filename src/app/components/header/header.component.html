@@ -1,0 +1,41 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+
+        <ul class="nav-tabs">
+            <li class="nav-tab">
+                <a [routerLink]="['/Home']" routerLinkActive="router-link-active">Home</a>
+            </li>
+            <li class="nav-tab">
+                <a [routerLink]="['/Products']" routerLinkActive="router-link-active">Products</a>
+            </li>
+            <li class="nav-tab">
+                <a [routerLink]="['/observer']" routerLinkActive="router-link-active">observer</a>
+            </li>
+
+            <li class="nav-tab ">
+                <a [routerLink]="['/usertemplate']" routerLinkActive="router-link-active">user</a>
+            </li>
+            <li class="nav-tab ">
+                <a [routerLink]="['/Admin']" routerLinkActive="router-link-active">Admin</a>
+            </li>
+
+            <li class="nav-tab " [hidden]="user">
+                <a [routerLink]="['/UserLogin']" routerLinkActive="router-link-active">Login</a>
+            </li>
+            <li class="nav-tab " [hidden]="!user">
+                <a [routerLink]="['/UserLogout']" routerLinkActive="router-link-active">Logout</a>
+            </li>
+            <li class="nav-tab ">
+                <a [routerLink]=" [ '/userraectiveform'] " routerLinkActive="router-link-active ">userReactiveForm</a>
+            </li>
+
+            <!-- <li class=" nav-tab "></li> -->
+        </ul>
+
+        <form class="d-flex " role="search ">
+            <input class="form-control me-2 " type="search " placeholder="Search " aria-label="Search ">
+            <button class="btn btn-outline-success " type="submit ">Search</button>
+        </form>
+    </div>
+</nav>

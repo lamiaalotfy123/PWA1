@@ -1,0 +1,32 @@
+<!-- <button class="btn btn-danger" (click)="addNewUser()">Add User</button> -->
+<form (ngSubmit)="addNewUser()">
+    <!-- first name -->
+    <div class=" row mb-3 ">
+        <label for="inputFirstName3 " class="col-sm-2 col-form-label ">First
+      Name</label>
+        <div class="col-sm-10 ">
+            <input type="text " class="form-control " id="inputFirstName3 " [(ngModel)]="user.firstName " name="inputFirstName3 " required>
+
+        </div>
+    </div>
+
+    <!-- last name -->
+    <div class="row mb-3 ">
+        <label for="inputLastName3 " class="col-sm-2 col-form-label ">Last
+      Name</label>
+        <div class="col-sm-10 ">
+            <input type="text " class="form-control " id="inputLastName3 " [(ngModel)]="user.lastName " name="inputLastName3 " required>
+
+        </div>
+    </div>
+    <div class=" row mb-3 ">
+        <label for="inputEmail3 " class="col-sm-2 col-form-label ">Email</label>
+        <div class="col-sm-10 ">
+            <input type="email " class="form-control " id="inputEmail3 " [(ngModel)]="user.email " name="inputEmail3 " required>
+
+        </div>
+    </div>
+
+    <button type="submit " class="btn btn-primary ">Sign in</button>
+
+</form>

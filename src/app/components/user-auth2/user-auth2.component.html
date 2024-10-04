@@ -1,0 +1,14 @@
+<!-- form login , -->
+<div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" class="form-control" id="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" required>
+</div>
+<!-- button login logout -->
+<button class="btn btn-primary" id="login" (click)="login()" [hidden]="user">Login</button>
+<!-- true -->
+<button class="btn btn-primary" id="logout" (click)="logout()" [hidden]="!user">Logout</button>
+
+<!-- false-->

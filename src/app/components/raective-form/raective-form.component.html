@@ -1,0 +1,48 @@
+<!-- <button class="btn btn-danger" (click)="addNewUser()">Add User</button> -->
+<form [formGroup]="userform" (ngSubmit)="addNewUser()">
+    <h1>Add userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</h1>
+    <!-- first name -->
+    <div class=" row mb-3 ">
+        <label for="inputFirstName3 " class="col-sm-2 col-form-label ">First
+      Name</label>
+        <div class="col-sm-10 ">
+            <input type="text " class="form-control " id="firstName " formControlName="firstName" name="firstName ">
+            <!-- [ngClass]="{'is-invalid': (userform.get('firstName')?.touched)}" -->
+            <!-- [ngClass]="{'is-invalid': (firstName?.touched)}" -->
+
+        </div>
+    </div>
+    <!-- last name -->
+    <div class="row mb-3 ">
+        <label for="inputLastName3 " class="col-sm-2 col-form-label ">Last
+      Name</label>
+        <div class="col-sm-10 ">
+            <input type="text " class="form-control " id="lastName " formControlName="lastName" name="lastName " required>
+
+        </div>
+    </div>
+    <div class=" row mb-3 ">
+        <label for="inputEmail3 " class="col-sm-2 col-form-label ">Email</label>
+        <div class="col-sm-10 ">
+            <input type="email " class="form-control " id="email " formControlName="email" name="email" required>
+
+        </div>
+    </div>
+    <!-- many numberinputs -->
+
+    Number:
+    <div formArrayName="number">
+        @for(add of number.controls;track $index){
+        <div [formGroupName]="$index">
+            <input type="number" formControlName="number1" name="numbers" placeholder="Enter number" />
+            <input type="number" formControlName="number2" name="numbers" placeholder="Enter number" />
+            <button type="button" class="btn btn-danger" (click)="removeNumber($index)">remove number</button>
+        </div>}
+
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addNumber()">add
+    number</button>
+
+    <button type="submit " class="btn btn-primary ">Sign in</button>
+
+</form>

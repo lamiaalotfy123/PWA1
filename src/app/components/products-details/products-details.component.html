@@ -1,0 +1,38 @@
+@if (currentProduct){
+<div class="row">
+    <input type="text" placeholder="Search by Material" id="searchMaterial" #inputValue />
+    <button class="btn btn-primary" (click)="searchMaterial(inputValue.value)" [disabled]="searchMaterial.length==0">Search</button>
+    <ul>
+
+
+        @for (item of productsAfterSearch; track $index){
+        <li>
+            {{item.name}}
+        </li>
+        }
+    </ul>
+
+
+    <div class="col-lg-6">
+        <img src="{{currentProduct.PrdimgURL}}" alt="Product Image" class="img-fluid">
+    </div>
+    <div class="col-lg-6">
+        <h2>{{currentProduct.name}}</h2>
+        <p>Material:{{currentProduct.Material}}</p>
+        <p>price:{{currentProduct.price}}</p>
+        <p>quantity:{{currentProduct.quantity}}</p>
+    </div>
+</div>}
+<!-- buttons previos next -->
+<div class="row d-flex ">
+    <div class="col-lg-6">
+        <button class="btn btn-primary" (click)="prevFun()" [disabled]="productId==allidsList[0]">Prev</button>
+    </div>
+    <div class="col-lg-6">
+        <button class="btn btn-primary" (click)=" nextFun()" [disabled]="productId==allidsList[allidsList.length-1] ">Next</button>
+
+    </div>
+
+</div>
+<button class="button-91" (click)="goBack()">back</button>
+<!-- <button class="button-91" [routerLink]="['/products']" routerLinkActive="router-link-active>back</button> -->
